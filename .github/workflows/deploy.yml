@@ -26,10 +26,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: 'DineshNarayana27/DineshNarayana27'
+          fetch-depth: 0 # This line fetches the entire project history
       
       - name: List files for debugging
-        run: find . -print
-      
+        run: ls -R
+
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
