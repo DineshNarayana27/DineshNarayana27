@@ -1,5 +1,5 @@
 # Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+name: Deploy Frontend to Pages
 
 on:
   push:
@@ -21,15 +21,17 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    steps:
-      - name: Manually Checkout Repository
-        run: |
-          git clone https://github.com/DineshNarayana27/DineshNarayana27.git .
-          git fetch --all
-          git checkout main
 
-      - name: List files for debugging
-        run: ls -R
+    # This is the key change: all steps will run from inside the 'frontend' directory
+    defaults:
+      run:
+        working-directory: ./frontend
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Node
         uses: actions/setup-node@v4
@@ -37,10 +39,10 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: cd frontend && npm install
+        run: npm install
 
       - name: Build
-        run: cd frontend && npm run build
+        run: npm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -48,6 +50,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
+          # Upload the dist folder from the frontend directory
           path: './frontend/dist'
 
       - name: Deploy to GitHub Pages
