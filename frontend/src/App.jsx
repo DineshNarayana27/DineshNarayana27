@@ -1,13 +1,13 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
-import SignupPage from './pages/SignupPage';
-import DashboardPage from './pages/DashboardPage';
-import SubmitArticlePage from './pages/SubmitArticlePage';
-import SubmitProjectPage from './pages/SubmitProjectPage';
+import Header from './components/Header.jsx';
+import Footer from './components/Footer.jsx';
+import HomePage from './pages/HomePage.jsx';
+import LoginPage from './pages/LoginPage.jsx';
+import SignupPage from './pages/SignupPage.jsx';
+import DashboardPage from './pages/DashboardPage.jsx';
+import SubmitArticlePage from './pages/SubmitArticlePage.jsx';
+import SubmitProjectPage from './pages/SubmitProjectPage.jsx';
 
 function App() {
   return (
