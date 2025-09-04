@@ -22,7 +22,6 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
 
-    # This sets the working directory for all run steps in this job
     defaults:
       run:
         working-directory: ./frontend
@@ -50,8 +49,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # This path is now relative to the working directory
-          path: ./dist
+          # This is the corrected path:
+          path: './frontend/dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
